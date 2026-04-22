@@ -1,6 +1,6 @@
-# AegisRAG MCP Server
+# vanguard-mcp-server
 
-Python MCP 服务器，提供对 AegisRAG API 的访问。
+Python MCP 服务器，提供对 Vanguard API 的访问。
 
 ## 开发
 
@@ -12,7 +12,7 @@ python main.py
 ## 构建
 
 ```bash
-docker build -t aegis-mcp-server .
+docker build -t vanguard-mcp-server .
 ```
 
 ## 部署
@@ -20,4 +20,3 @@ docker build -t aegis-mcp-server .
 ```bash
 ./scripts/deploy.sh
 ```
-# vanguard-mcp-server
