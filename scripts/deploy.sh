@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+
+DOCKER_REGISTRY="${DOCKER_REGISTRY:-registry.example.com}"
+DOCKER_NAMESPACE="${DOCKER_NAMESPACE:-aegis-rag}"
+APP_NAME="mcp-server"
+VERSION=${1:-$(git rev-parse --short HEAD)}
+
+echo "部署 $APP_NAME，版本: $VERSION"
+
+docker build -t $DOCKER_REGISTRY/$DOCKER_NAMESPACE/$APP_NAME:$VERSION .
+docker tag $DOCKER_REGISTRY/$DOCKER_NAMESPACE/$APP_NAME:$VERSION $DOCKER_REGISTRY/$DOCKER_NAMESPACE/$APP_NAME:latest
+
+docker push $DOCKER_REGISTRY/$DOCKER_NAMESPACE/$APP_NAME:$VERSION
+docker push $DOCKER_REGISTRY/$DOCKER_NAMESPACE/$APP_NAME:latest
+
+echo "部署完成！"
